@@ -16,9 +16,11 @@ describe ('StringCalculator', function(){
         it('check add more than 2 numbers', function(){
             expect(sc.stringAdd("1,1,1,1,1")).to.equal(5)
         })
-
         it('check add numbers with new line', function(){
             expect(sc.stringAdd("1,1\n1")).to.equal(3)
+        })
+        it('check add with new delimiter', function(){
+            expect(sc.stringAdd("//;\n1;2")).to.equal(3)
         })
         
     })
