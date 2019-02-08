@@ -22,14 +22,17 @@ describe ('StringCalculator', function(){
         it('check add with new delimiter', function(){
             expect(sc.stringAdd("//;\n1;2")).to.equal(3)
         })
-        /* it('check negatives throwing msg', function(){
-            expect(sc.stringAdd("1,-1,2,-3")).to.throw()
-        }) */
+        it('check negatives throwing msg', function(){
+            expect(() => sc.stringAdd("1,-1,2,-3")).to.throw("Negatives not allowed: -1,-3,")
+        })
         it('check add number bigger than 1000', function(){
             expect(sc.stringAdd("2,1002,3,2000")).to.equal(5)
         })
         it('check add with delimiters any length', function(){
             expect(sc.stringAdd("//[||||]\n2||||2")).to.equal(4)
+        })
+        it('check add with multiple delimiters', function(){
+            expect(sc.stringAdd("//[,][%]\n2,2%2")).to.equal(6)
         })
     })
 })
