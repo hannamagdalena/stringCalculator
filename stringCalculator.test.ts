@@ -28,5 +28,8 @@ describe ('StringCalculator', function(){
         it('check add number bigger than 1000', function(){
             expect(sc.stringAdd("2,1002,3,2000")).to.equal(5)
         })
+        it('check add with delimiters any length', function(){
+            expect(sc.stringAdd("//[||||]\n2||||2")).to.equal(4)
+        })
     })
 })
