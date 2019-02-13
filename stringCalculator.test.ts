@@ -16,7 +16,7 @@ describe ('StringCalculator', function(){
     })
     describe('getDelimiters', function(){
         it('check delimiters', function(){
-            expect(sc.getDelimiter("//[;][||]\n1||1;1")).to.equal(";|\|\|")//erwartet ;|\\|\\|
+            expect(sc.getDelimiter("//[;][||]\n1||1;1")).to.equal(";|\\|\\|")
             expect(sc.getDelimiter("//;\n2;2")).to.equal(";")
         }) 
     })

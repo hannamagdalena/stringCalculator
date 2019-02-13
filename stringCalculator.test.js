@@ -17,7 +17,7 @@ describe('StringCalculator', function () {
     });
     describe('getDelimiters', function () {
         it('check delimiters', function () {
-            chai_1.expect(sc.getDelimiter("//[;][||]\n1||1;1")).to.equal(";|\|\|"); //erwartet ;|\\|\\|
+            chai_1.expect(sc.getDelimiter("//[;][||]\n1||1;1")).to.equal(";|\\|\\|");
             chai_1.expect(sc.getDelimiter("//;\n2;2")).to.equal(";");
         });
     });
