@@ -4,35 +4,34 @@ export class StringCalculator {
     stringAdd(numbers: string): number {
         let sum: number = 0
 
-        if (/^\d*\.?\d+$/.test(numbers) && Number(numbers) <= 1000) {
-            let nrToCheck: string[] = [numbers]
-            this.checkNegatives(nrToCheck)
-            sum += Number(numbers)
-        }
 
-        else if (!numbers.length)
-            sum = 0
+        if (!numbers.length)
+            return 0
+
+        else if (/^\d*\.?\d+$/.test(numbers))
+            sum = this.addSingleNumber(numbers)
 
         else if (numbers.startsWith("//")) {
-            let newString: string
-            let delimiter: string
-            let delLen: number = 0
-            newString = numbers.substr(numbers.lastIndexOf("\n") + 1)
 
+            let newString = numbers.substr(numbers.lastIndexOf("\n") + 1)
             var strs = newString.split(new RegExp(this.getDelimiter(numbers)))
-
-            this.checkNegatives(strs)
-            let nrs = strs.map(element => Number(element)).filter(element => element <= 1000)
-            sum = _.sum(nrs)
+            sum=this.addNumbersWithDelimiter(strs)
         }
-
         else {
             var strs = numbers.split(/[\n|,]/)
-            this.checkNegatives(strs)
-            let nrs = strs.map(element => Number(element)).filter(element => element <= 1000)
-            sum = _.sum(nrs)
+            sum=this.addNumbersWithDelimiter(strs)
         }
         return sum
+    }
+    addSingleNumber(numbers: string): number {
+        let nrToCheck: string[] = [numbers]
+        this.checkNegatives(nrToCheck)
+        return Number(numbers) <= 1000 ? Number(numbers) : 0
+    }
+    addNumbersWithDelimiter(strs:string[]):number{
+        this.checkNegatives(strs)
+        let nrs = strs.map(element => Number(element)).filter(element => element <= 1000)
+        return _.sum(nrs)
     }
     checkNegatives(numbers: string[]) {
         let neg = numbers.filter(element => Number(element) < 0)
@@ -41,10 +40,8 @@ export class StringCalculator {
     }
     getDelimiter(numbers: string): string {
         let delimiter: string = ""
-
         if (numbers.includes("[")) {
-            const reg = /(?<=\[)(.*?)(?=\])/g
-            const dels = numbers.match(reg)
+            const dels = numbers.match(/(?<=\[)(.*?)(?=\])/g)
             if (dels != null)
                 delimiter = dels.map(element => _.escapeRegExp(element)).join("|")
         }
@@ -56,6 +53,6 @@ export class StringCalculator {
 }
 
 var obj = new StringCalculator()
-console.log(obj.stringAdd("//[||][;]\n1||3;7||56;67"))
+console.log(obj.stringAdd("//;;;\n1;;;3;;;7;;;56;;;67"))
 //console.log(obj.checkNegatives(["1", "-2", "-3","4","-8"]))
 
