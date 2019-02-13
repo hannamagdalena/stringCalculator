@@ -42,18 +42,14 @@ class StringCalculator {
             else
                 var strs = newString.split(delimiter);
             this.checkNegatives(strs);
-            for (let j in strs) {
-                if (Number(strs[j]) <= 1000)
-                    sum += Number(strs[j]);
-            }
+            let nrs = strs.map(element => Number(element)).filter(element => element <= 1000);
+            sum = _.sum(nrs);
         }
         else {
             var strs = numbers.split(/[\n|,]/);
             this.checkNegatives(strs);
-            for (let j in strs) {
-                if (Number(strs[j]) <= 1000)
-                    sum += Number(strs[j]);
-            }
+            let nrs = strs.map(element => Number(element)).filter(element => element <= 1000);
+            sum = _.sum(nrs);
         }
         return sum;
     }
@@ -65,5 +61,5 @@ class StringCalculator {
 }
 exports.StringCalculator = StringCalculator;
 var obj = new StringCalculator();
-//console.log(obj.stringAdd("//[::][||]\n1::-3||7||-56::-67"))
+console.log(obj.stringAdd("//[::][||]\n1::3||7||56::67"));
 //console.log(obj.checkNegatives(["1", "-2", "-3","4","-8"]))
