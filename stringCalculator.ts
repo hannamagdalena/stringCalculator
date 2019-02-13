@@ -9,7 +9,7 @@ export class StringCalculator {
             for (let i = 1; i < neg.length; i++)   //erster nach split -> leerstring..
                 err += "-" + neg[i][0] + ",";
             err = err.substring(0, err.length - 1)
-            throw err;
+            throw new Error(err);
 
         }
 
@@ -19,7 +19,7 @@ export class StringCalculator {
         else if (!numbers.length)
             sum = 0
 
-        else if (numbers.charAt(0) == "/" && numbers.charAt(1) == "/") {
+        else if (numbers.startsWith("//")) {    //numbers.charAt(0) == "/" && numbers.charAt(1) == "/"
             let newString: string
             let delimiter: string
             let delLen: number = 0
@@ -65,5 +65,4 @@ export class StringCalculator {
 }
 
 var obj = new StringCalculator()
-//console.log(obj.stringAdd("//[;]\n1;2;1"))
-console.log(obj.stringAdd("123"))
+console.log(obj.stringAdd("//[;]\n1;2;1"))
