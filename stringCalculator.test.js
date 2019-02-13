@@ -4,7 +4,7 @@ const chai_1 = require("chai");
 const stringCalculator_1 = require("./stringCalculator");
 describe('StringCalculator', function () {
     const sc = new stringCalculator_1.StringCalculator();
-    describe('add', function () {
+    describe('stringAdd', function () {
         it('check add nothing', function () {
             chai_1.expect(sc.stringAdd("")).to.equal(0);
         });

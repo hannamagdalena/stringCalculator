@@ -10,7 +10,7 @@ export class StringCalculator {
 
         else if (numbers.startsWith("//")) {
 
-            let newString = numbers.substr(numbers.lastIndexOf("\n") + 1)
+            let newString = numbers.substr(numbers.lastIndexOf("]") + 2)
             var strs = newString.split(new RegExp(this.getDelimiter(numbers)))
             sum=this.addNumbersWithDelimiter(strs)
         }
@@ -33,9 +33,9 @@ export class StringCalculator {
     getDelimiter(numbers: string): string {
         let delimiter: string = ""
         if (numbers.includes("[")) {
-            const dels = numbers.match(/(?<=\[)(.*?)(?=\])/g)
-            if (dels != null)
-                delimiter = dels.map(element => _.escapeRegExp(element)).join("|")
+            const dels = numbers.match(/(?<=\[)(\D*?)(?=\])/g) 
+            if (dels != null){
+                delimiter = dels.map(element => _.escapeRegExp(element)).join("|")}
         }
         else
             delimiter = numbers.substring(2, numbers.lastIndexOf("\n"))
@@ -45,6 +45,5 @@ export class StringCalculator {
 }
 
 var obj = new StringCalculator()
-console.log(obj.stringAdd("123"))
-//console.log(obj.checkNegatives(["1", "-2", "-3","4","-8"]))
+console.log(obj.stringAdd("//[*][|||][\n]\n2*1|||3\n1"))
 

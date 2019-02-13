@@ -3,7 +3,7 @@ import { StringCalculator} from './stringCalculator';
 
 describe ('StringCalculator', function(){
     const sc=new StringCalculator()
-    describe('add', function(){
+    describe('stringAdd', function(){
         it('check add nothing', function(){
             expect(sc.stringAdd("")).to.equal(0)
         })
@@ -38,4 +38,5 @@ describe ('StringCalculator', function(){
             expect(sc.stringAdd("//[;;][|||][:]\n2|||2;;2:2")).to.equal(8)
         })
     })
+    
 })
