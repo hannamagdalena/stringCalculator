@@ -34,9 +34,11 @@ describe('StringCalculator', function () {
         });
         it('check add with multiple delimiters', function () {
             chai_1.expect(sc.stringAdd("//[,][%]\n2,2%2")).to.equal(6);
+            chai_1.expect(sc.stringAdd("//[:][\n][;]\n2;2\n2:2")).to.equal(8);
         });
         it('check add multiple delimiters any length', function () {
             chai_1.expect(sc.stringAdd("//[;;][|||][:]\n2|||2;;2:2")).to.equal(8);
+            chai_1.expect(sc.stringAdd("//[;;][\n][|||]\n2|||2;;2\n2")).to.equal(8);
         });
     });
 });

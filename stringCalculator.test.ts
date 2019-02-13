@@ -33,9 +33,11 @@ describe ('StringCalculator', function(){
         })
         it('check add with multiple delimiters', function(){
             expect(sc.stringAdd("//[,][%]\n2,2%2")).to.equal(6)
+            expect(sc.stringAdd("//[:][\n][;]\n2;2\n2:2")).to.equal(8)
         })
         it('check add multiple delimiters any length', function(){
             expect(sc.stringAdd("//[;;][|||][:]\n2|||2;;2:2")).to.equal(8)
+            expect(sc.stringAdd("//[;;][\n][|||]\n2|||2;;2\n2")).to.equal(8)
         })
     })
     
