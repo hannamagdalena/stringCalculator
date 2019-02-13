@@ -3,6 +3,11 @@ import { StringCalculator} from './stringCalculator';
 
 describe ('StringCalculator', function(){
     const sc=new StringCalculator()
+    describe('addNumbersWithDelimiters', function(){
+        it('check sum', function(){
+            expect(sc.addNumbersWithDelimiter(["1","1","1"])).to.equal(3)
+        })
+    })
     describe('stringAdd', function(){
         it('check add nothing', function(){
             expect(sc.stringAdd("")).to.equal(0)
