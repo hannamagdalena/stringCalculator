@@ -13,8 +13,6 @@ class StringCalculator {
         let sum = 0;
         if (!numbers.length)
             return 0;
-        else if (/^\d*\.?\d+$/.test(numbers))
-            sum = this.addSingleNumber(numbers);
         else if (numbers.startsWith("//")) {
             let newString = numbers.substr(numbers.lastIndexOf("\n") + 1);
             var strs = newString.split(new RegExp(this.getDelimiter(numbers)));
@@ -25,11 +23,6 @@ class StringCalculator {
             sum = this.addNumbersWithDelimiter(strs);
         }
         return sum;
-    }
-    addSingleNumber(numbers) {
-        let nrToCheck = [numbers];
-        this.checkNegatives(nrToCheck);
-        return Number(numbers) <= 1000 ? Number(numbers) : 0;
     }
     addNumbersWithDelimiter(strs) {
         this.checkNegatives(strs);
@@ -55,5 +48,5 @@ class StringCalculator {
 }
 exports.StringCalculator = StringCalculator;
 var obj = new StringCalculator();
-console.log(obj.stringAdd("//;;;\n1;;;3;;;7;;;56;;;67"));
+console.log(obj.stringAdd("123"));
 //console.log(obj.checkNegatives(["1", "-2", "-3","4","-8"]))

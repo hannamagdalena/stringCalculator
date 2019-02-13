@@ -8,9 +8,6 @@ export class StringCalculator {
         if (!numbers.length)
             return 0
 
-        else if (/^\d*\.?\d+$/.test(numbers))
-            sum = this.addSingleNumber(numbers)
-
         else if (numbers.startsWith("//")) {
 
             let newString = numbers.substr(numbers.lastIndexOf("\n") + 1)
@@ -22,11 +19,6 @@ export class StringCalculator {
             sum=this.addNumbersWithDelimiter(strs)
         }
         return sum
-    }
-    addSingleNumber(numbers: string): number {
-        let nrToCheck: string[] = [numbers]
-        this.checkNegatives(nrToCheck)
-        return Number(numbers) <= 1000 ? Number(numbers) : 0
     }
     addNumbersWithDelimiter(strs:string[]):number{
         this.checkNegatives(strs)
@@ -53,6 +45,6 @@ export class StringCalculator {
 }
 
 var obj = new StringCalculator()
-console.log(obj.stringAdd("//;;;\n1;;;3;;;7;;;56;;;67"))
+console.log(obj.stringAdd("123"))
 //console.log(obj.checkNegatives(["1", "-2", "-3","4","-8"]))
 
