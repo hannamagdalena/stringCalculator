@@ -4,7 +4,6 @@ export class StringCalculator {
     stringAdd(numbers: string): number {
         let sum: number = 0
 
-
         if (!numbers.length)
             return 0
 
@@ -46,4 +45,5 @@ export class StringCalculator {
 
 var obj = new StringCalculator()
 console.log(obj.stringAdd("//[*][|||][\n]\n2*1|||3\n1"))
+
 
