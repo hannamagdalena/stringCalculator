@@ -12,6 +12,13 @@ describe('StringCalculator', function () {
     describe('checkNegatives', function () {
         it('check Error Msg', function () {
             chai_1.expect(() => sc.checkNegatives(["1", "-1", "-3"])).to.throw("Negatives not allowed: -1,-3");
+            chai_1.expect(() => sc.checkNegatives(["1", "1", "1"])).to.not.throw("Negatives not allowed: ");
+        });
+    });
+    describe('getDelimiters', function () {
+        it('check delimiters', function () {
+            chai_1.expect(sc.getDelimiter("//[;][||]\n1||1;1")).to.equal(";|\|\|"); //erwartet ;|\\|\\|
+            chai_1.expect(sc.getDelimiter("//;\n2;2")).to.equal(";");
         });
     });
     describe('stringAdd', function () {

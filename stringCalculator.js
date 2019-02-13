@@ -50,3 +50,4 @@ class StringCalculator {
 exports.StringCalculator = StringCalculator;
 var obj = new StringCalculator();
 console.log(obj.stringAdd("//[*][|||][\n]\n2*1|||3\n1"));
+console.log(obj.getDelimiter("//[;][||]\n1||1;1"));

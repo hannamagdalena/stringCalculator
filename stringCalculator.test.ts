@@ -11,7 +11,14 @@ describe ('StringCalculator', function(){
     describe('checkNegatives', function(){
         it('check Error Msg', function(){
             expect(()=>sc.checkNegatives(["1","-1","-3"])).to.throw("Negatives not allowed: -1,-3")
+            expect(()=>sc.checkNegatives(["1","1","1"])).to.not.throw("Negatives not allowed: ")
         })
+    })
+    describe('getDelimiters', function(){
+        it('check delimiters', function(){
+            expect(sc.getDelimiter("//[;][||]\n1||1;1")).to.equal(";|\|\|")//erwartet ;|\\|\\|
+            expect(sc.getDelimiter("//;\n2;2")).to.equal(";")
+        }) 
     })
     describe('stringAdd', function(){
         it('check add nothing', function(){
