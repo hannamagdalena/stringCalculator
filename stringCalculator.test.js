@@ -3,7 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
 const stringCalculator_1 = require("./stringCalculator");
 describe('StringCalculator', function () {
-    const sc = new stringCalculator_1.StringCalculator();
+    let sc;
+    beforeEach('create new Object', function () {
+        sc = new stringCalculator_1.StringCalculator();
+    });
     describe('addNumbersWithDelimiters', function () {
         it('check sum', function () {
             chai_1.expect(sc.addNumbersWithDelimiter(["1", "1", "1"])).to.equal(3);

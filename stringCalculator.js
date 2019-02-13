@@ -15,11 +15,11 @@ class StringCalculator {
             return 0;
         else if (numbers.startsWith("//")) {
             let newString = numbers.substr(numbers.lastIndexOf("]") + 2);
-            var strs = newString.split(new RegExp(this.getDelimiter(numbers)));
+            let strs = newString.split(new RegExp(this.getDelimiter(numbers)));
             sum = this.addNumbersWithDelimiter(strs);
         }
         else {
-            var strs = numbers.split(/[\n|,]/);
+            let strs = numbers.split(/[\n|,]/);
             sum = this.addNumbersWithDelimiter(strs);
         }
         return sum;
@@ -48,7 +48,5 @@ class StringCalculator {
     }
 }
 exports.StringCalculator = StringCalculator;
-var obj = new StringCalculator();
+let obj = new StringCalculator();
 console.log(obj.stringAdd("//[*][|||][\n]\n2*1|||3\n1"));
-console.log(obj.getDelimiter("//[;][||]\n1||1;1"));
-console.log("as\|");
