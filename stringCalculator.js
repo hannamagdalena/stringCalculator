@@ -23,24 +23,7 @@ class StringCalculator {
             let delimiter;
             let delLen = 0;
             newString = numbers.substr(numbers.lastIndexOf("\n") + 1);
-            if (numbers.lastIndexOf("\n") == 3)
-                delimiter = numbers.charAt(2);
-            else {
-                let delTmp = "";
-                const reg = /(?<=\[)(.*?)(?=\])/g;
-                const dels = numbers.match(reg);
-                if (dels != null) {
-                    for (let f in dels) {
-                        delTmp += _.escapeRegExp(dels[f]) + "|";
-                    }
-                }
-                delimiter = "[" + delTmp + "]";
-                delLen = delimiter.length;
-            }
-            if (delimiter.length == delLen)
-                var strs = newString.split(new RegExp(delimiter));
-            else
-                var strs = newString.split(delimiter);
+            var strs = newString.split(new RegExp(this.getDelimiter(numbers)));
             this.checkNegatives(strs);
             let nrs = strs.map(element => Number(element)).filter(element => element <= 1000);
             sum = _.sum(nrs);
@@ -58,8 +41,20 @@ class StringCalculator {
         if (neg.length > 0)
             throw new Error("Negatives not allowed: " + neg.join(","));
     }
+    getDelimiter(numbers) {
+        let delimiter = "";
+        if (numbers.includes("[")) {
+            const reg = /(?<=\[)(.*?)(?=\])/g;
+            const dels = numbers.match(reg);
+            if (dels != null)
+                delimiter = dels.map(element => _.escapeRegExp(element)).join("|");
+        }
+        else
+            delimiter = numbers.substring(2, numbers.lastIndexOf("\n"));
+        return delimiter;
+    }
 }
 exports.StringCalculator = StringCalculator;
 var obj = new StringCalculator();
-console.log(obj.stringAdd("//[::][||]\n1::3||7||56::67"));
+console.log(obj.stringAdd("//[||][;]\n1||3;7||56;67"));
 //console.log(obj.checkNegatives(["1", "-2", "-3","4","-8"]))
