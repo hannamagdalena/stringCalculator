@@ -26,7 +26,7 @@ class StringCalculator {
     }
     addNumbersWithDelimiter(strs) {
         this.checkNegatives(strs);
-        let nrs = strs.map(element => Number(element)).filter(element => element <= 1000);
+        let nrs = strs.map(Number).filter(element => element <= 1000);
         return _.sum(nrs);
     }
     checkNegatives(numbers) {
