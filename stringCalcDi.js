@@ -48,10 +48,3 @@ class StringCalcDi {
     }
 }
 exports.StringCalcDi = StringCalcDi;
-let v1 = new StringCalcDi();
-console.log(v1.stringAdd(""));
-console.log(v1.stringAdd("1,2,2\n2"));
-console.log("1:", v1.stringAdd("//[;][::]\n2;2::2"));
-console.log("2:", v1.stringAdd("//;\n2;2;2"));
-console.log("3:", v1.stringAdd("//:::\n2:::2:::2"));
-console.log("4:", v1.stringAdd("//[;][::]\n2;-2::2;-4::-3"));
