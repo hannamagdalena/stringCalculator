@@ -20,6 +20,7 @@ export class StringCalculator {
       this.checkNegatives(numArray);
       sum = _.sum(numArray);
     }
+    return sum;
   }
   public getDelimiters(numString: string) {
     let delimiters;
@@ -30,7 +31,7 @@ export class StringCalculator {
     else return '';
   }
   public addNumbersWithDelimiters(numString: string, delimiters: string) {
-    numString = numString.substr(numString.lastIndexOf('\n'));
+    numString = numString.substr(numString.lastIndexOf(']') + 2);
     const numArray = numString
       .split(new RegExp(delimiters))
       .map(Number)
